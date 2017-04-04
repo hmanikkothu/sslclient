@@ -1,6 +1,6 @@
-# sslclient
+# HTTPS requests in org.springframework.web
 
-### Default CA Cert Validation
+### Default CA Cert Validation when using org.springframework.web.client.RestTemplate 
 This example uses org.springframework.web.client.RestTemplate to make http requests. This make use of the SSLSocketFactoryImp, and SSLContextImpl$DefaultSSLContext classes, through which get access to the default cacert store file (loaded through X509TrustManagerImpl).
 
 Code references: 
