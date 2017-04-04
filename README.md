@@ -1,6 +1,6 @@
 # HTTPS requests in org.springframework.web
 
-### Default CA Cert Validation when using org.springframework.web.client.RestTemplate 
+## Default CA Cert Validation when using org.springframework.web.client.RestTemplate 
 This example uses org.springframework.web.client.RestTemplate to make http requests. This make use of the SSLSocketFactoryImp, and SSLContextImpl$DefaultSSLContext classes, through which get access to the default cacert store file (loaded through X509TrustManagerImpl).
 
 Code references: 
@@ -72,4 +72,16 @@ If "javax.net.ssl.trustStore" is not set, then it falls back to 'jssecacert' and
   182                   }
   183               }
 ```
+
+## How to use Self-Singed-Certificates
+So with this default implemention as mentioned above, the validation of self signed certificates will fail because the cert is not part of the default truststore or it's root is not signed by a CA. So the recommended approach is to create a keystore file and import the X509 cert or the publicKey to it using keytool. 
+
+```bash
+keytool -import -alias susan -file Example.cer -keystore exampleraystore
+```
+set password when prompted.
+ref: https://docs.oracle.com/javase/tutorial/security/toolsign/rstep2.html
+
+Then set the "javax.net.ssl.trustStore" to the path of the keystore file.
+
 
