@@ -85,3 +85,4 @@ ref: https://docs.oracle.com/javase/tutorial/security/toolsign/rstep2.html
 Then set the "javax.net.ssl.trustStore" to the path of the keystore file.
 
 
+### Blog post: http://egazer.blogspot.com/2017/04/https-requests-using.html
